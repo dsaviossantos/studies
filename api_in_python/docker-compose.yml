@@ -3,6 +3,10 @@ version: "3.9"
 services:
   db:
     image:  postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -14,6 +18,10 @@ services:
       - PGADMIN_DEFAULT_EMAIL=dsaviossantos@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=dsaviossantos
     ports:
-      - "80:80"
+      - 80:80
     depends_on:
       - db
+
+volumes:
+  db-data:
+   driver: local
