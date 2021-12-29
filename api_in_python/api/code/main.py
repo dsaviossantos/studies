@@ -5,7 +5,7 @@ from    flask_sqlalchemy    import  SQLAlchemy
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@localhost/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@db:5432/postgres'
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -81,4 +81,4 @@ class UserResouce(Resource):
 api.add_resource(UserResouce, "/user")
 
 if  __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)

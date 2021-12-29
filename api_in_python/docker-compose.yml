@@ -12,6 +12,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
+  api:
+    build: ./api
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
   pgadmin:
     image:  dpage/pgadmin4
     environment:

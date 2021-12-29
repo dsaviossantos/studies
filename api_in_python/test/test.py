@@ -2,11 +2,11 @@ import  requests
 import json
 import time
 
-BASE = "http://127.0.0.1:5000"
+BASE = "http://localhost:5000"
 
 tic = time.perf_counter()
 i = 0
-while i < 100000:
+while i < 100:
     data = {
         "email": "email@email.com"+str(i),
         "name": "Joe Doe",
@@ -21,6 +21,7 @@ while i < 100000:
             "gender":"Webgender"}
 
     i += 1
+    time.sleep(1)
     response = requests.post(BASE + "/user",json=data)
 
 toc = time.perf_counter()
